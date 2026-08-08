@@ -94,11 +94,30 @@ h3{font-family:var(--sans);font-weight:600;font-size:1.0625rem;margin:0}
 .figures dd{margin:.5rem 0 0}
 .figures .figure{font-size:clamp(2rem,4.4vw,2.9rem)}
 
-/* ── intro on light ──────────────────────────── */
-.intro{padding:clamp(2.75rem,6vw,4rem) 0 clamp(1.5rem,3vw,2rem)}
-.intro p{margin:1rem 0 0;max-width:68ch;color:var(--graphite)}
-.intro p:first-of-type{font-size:1.0625rem;color:var(--noir);font-weight:500;max-width:62ch}
-.hoods{margin:1.5rem 0 0;font-size:.8125rem;color:var(--graphite)}
+/* ── intro on light ─────────────────────────── */
+.intro{padding:clamp(2.75rem,6vw,4.25rem) 0 clamp(1.5rem,3vw,2.25rem)}
+
+.lead-panel{
+  background:var(--gold-wash);border:1px solid var(--gold-soft);border-left:3px solid var(--brass-line);
+  padding:clamp(1.15rem,2.8vw,1.6rem) clamp(1.25rem,3vw,2rem);
+  margin:1.15rem 0 0;max-width:66ch
+}
+.lead-panel p{margin:0;font-size:clamp(1rem,1.6vw,1.125rem);font-weight:500;color:var(--noir);line-height:1.5}
+.lead-panel b{font-family:var(--display);font-weight:400;font-size:1.28em;letter-spacing:-.01em;color:var(--brass)}
+
+.steps{list-style:none;display:grid;gap:0;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));margin:clamp(2.25rem,5vw,3.25rem) 0 0;padding:0;counter-reset:s}
+.steps li{border-top:2px solid var(--noir);padding:1.15rem clamp(1rem,2.5vw,2rem) 0 0}
+.steps li + li{border-left:1px solid var(--hair);padding-left:clamp(1.25rem,3vw,2.25rem)}
+.steps .num{display:block;font-family:var(--display);font-size:2.125rem;line-height:1;letter-spacing:-.03em;color:var(--brass-line)}
+.steps h3{font-size:.6875rem;font-weight:600;letter-spacing:.19em;text-transform:uppercase;color:var(--noir);margin:.7rem 0 .55rem}
+.steps p{margin:0;font-size:.9375rem;color:var(--graphite)}
+
+.stamp{
+  margin:clamp(2rem,4vw,2.75rem) 0 0;padding-left:1.35rem;position:relative;
+  font-size:.75rem;letter-spacing:.02em;color:#7E7E8A;max-width:62ch
+}
+.stamp::before{content:"";position:absolute;left:0;top:.62rem;width:9px;height:1px;background:var(--brass-line)}
+.hoods{margin:1.1rem 0 0;font-size:.8125rem;color:var(--graphite)}
 .hoods b{font-weight:600;color:var(--noir)}
 
 /* ── filter bar ──────────────────────────────── */
@@ -139,6 +158,13 @@ h3{font-family:var(--sans);font-weight:600;font-size:1.0625rem;margin:0}
 .studio.featured:hover .row{padding-left:clamp(1.35rem,3vw,2.25rem)}
 .studio.featured + .studio:not(.featured){border-top:1px solid var(--hair)}
 .studio.featured .gauge{background:#EAE3D6}
+.pick{margin:0;padding:clamp(.95rem,2vw,1.2rem) clamp(1rem,2.4vw,1.75rem) 0}
+.pick span{
+  display:inline-block;background:var(--brass);color:var(--gold-wash);
+  font-size:.625rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  padding:.34rem .68rem
+}
+.studio.featured .row{padding-top:clamp(1rem,2vw,1.35rem)}
 .studio .row{
   display:grid;grid-template-columns:7rem 1fr auto;
   gap:0 clamp(1.25rem,4vw,3rem);align-items:start;
@@ -219,6 +245,7 @@ footer a{border-bottom:1px solid var(--hair-dark)}
   .figures{grid-template-columns:1fr 1fr}
   .figures > div:nth-child(3){grid-column:1/-1;border-left:0;padding-left:0;border-top:1px solid var(--hair-dark);margin-top:1.2rem}
   .split{grid-template-columns:1fr}
+  .steps li + li{border-left:0;padding-left:0;margin-top:1.75rem}
   .trio article + article{border-left:0;padding-left:0;margin-top:1.9rem}
 }
 @media (max-width:46rem){
@@ -263,10 +290,32 @@ footer a{border-bottom:1px solid var(--hair-dark)}
 <main>
   <section class="intro">
     <div class="wrap">
-      <p>We analysed 2,263 verified Google reviews across every permanent brow and cosmetic pigment studio operating in Etobicoke, then ranked the 17 that cleared our 4.6-star threshold.</p>
-      <p>This is not a paid directory and no studio can buy placement. Each listing is scored on two signals only: its current Google rating and the volume of reviews behind that rating. A single glowing review does not outweigh two hundred consistent ones, and a studio that slips below the threshold is removed at the next review cycle.</p>
-      <p>Every studio below holds a verified Etobicoke address and offers at least one brow or cosmetic pigment service. Med spas, laser clinics and salons with no brow work were screened out even where their ratings were high. Ratings, review counts, hours and phone numbers were captured in August 2026 and the full data set is re-processed monthly.</p>
-      <p class="hoods"><b>Covering:</b> The Queensway · Mimico · Humber Bay · Islington · New Toronto · Long Branch · Alderwood · The Kingsway · Humber Heights · Six Points</p>
+      <p class="label">Methodology</p>
+
+      <div class="lead-panel">
+        <p>We analysed <b>2,263</b> verified Google reviews across every permanent brow and cosmetic pigment studio operating in Etobicoke, then ranked the <b>17</b> that cleared our <b>4.6-star</b> threshold.</p>
+      </div>
+
+      <ol class="steps">
+        <li>
+          <span class="num">01</span>
+          <h3>No paid placement</h3>
+          <p>This is not a paid directory and no studio can buy its way in. Each listing is scored on two signals only: its current Google rating, and the volume of reviews behind that rating.</p>
+        </li>
+        <li>
+          <span class="num">02</span>
+          <h3>Weighted by volume</h3>
+          <p>A single glowing review does not outweigh two hundred consistent ones. A studio that slips below the threshold is removed at the next review cycle.</p>
+        </li>
+        <li>
+          <span class="num">03</span>
+          <h3>Screened by service</h3>
+          <p>Every studio holds a verified Etobicoke address and offers at least one brow or cosmetic pigment service. Med spas, laser clinics and salons with no brow work were screened out even where their ratings were high.</p>
+        </li>
+      </ol>
+
+      <p class="stamp">Ratings, review counts, hours and phone numbers captured August 2026. Full data set re-processed monthly.</p>
+      <p class="hoods"><b>Covering:</b> The Queensway &middot; Mimico &middot; Humber Bay &middot; Islington &middot; New Toronto &middot; Long Branch &middot; Alderwood &middot; The Kingsway &middot; Humber Heights &middot; Six Points</p>
     </div>
   </section>
 
@@ -290,6 +339,7 @@ footer a{border-bottom:1px solid var(--hair-dark)}
 
 
       <li class="studio featured" id="victoria-studio" data-rating="5" data-text="victoria studio permanent makeup 1500 islington ave islington nano brows ombre powder brows lip neutralization">
+        <p class="pick"><span>Best choice</span></p>
         <div class="row">
           <div class="score"><span class="figure">5.0</span><div class="gauge" aria-hidden="true"><i style="--v:100%"></i></div><span class="tally">136 reviews</span></div>
           <div>
@@ -309,6 +359,7 @@ footer a{border-bottom:1px solid var(--hair-dark)}
       </li>
 
       <li class="studio featured" id="aura-beauty-atelier" data-rating="5" data-text="aura beauty atelier 199 ninth street new toronto larissa nano brows powder brows microblading mth collective 10 years experience">
+        <p class="pick"><span>Best choice</span></p>
         <div class="row">
           <div class="score"><span class="figure">5.0</span><div class="gauge" aria-hidden="true"><i style="--v:100%"></i></div><span class="tally">31 reviews</span></div>
           <div>
@@ -316,7 +367,7 @@ footer a{border-bottom:1px solid var(--hair-dark)}
             <h3 class="name">Aura Beauty Atelier</h3>
             <p class="blurb">With over 10 years of experience, Larissa brings expert artistry, personalized care, and beautiful natural results that keep clients coming back.</p>
             <p class="where">199 Ninth St, Unit A</p>
-            <p class="does"><span>Nano brows</span><span>Powder brows</span><span>Microblading</span></p>
+            <p class="does"><span>Nano brows</span><span>Powder brows</span><span>Microblading</span><span>10 yrs experience</span></p>
           </div>
           <div class="actions">
             <a class="site" href="https://aurabeautyatelier.com/" target="_blank" rel="noopener">aurabeautyatelier.com</a>
@@ -326,6 +377,7 @@ footer a{border-bottom:1px solid var(--hair-dark)}
         </div>
       </li>
       <li class="studio featured" id="maniqr-brows" data-rating="5" data-text="maniqr brows 10 plastics ave queensway permanent brows lena brow shaping nails">
+        <p class="pick"><span>Best choice</span></p>
         <div class="row">
           <div class="score"><span class="figure">5.0</span><div class="gauge" aria-hidden="true"><i style="--v:100%"></i></div><span class="tally">64 reviews</span></div>
           <div>
